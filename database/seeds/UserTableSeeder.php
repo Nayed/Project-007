@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
         User::create(
             [
                 'name' => 'Nayed',
-                'login' => 'nayed@gmail.com',
+                'email' => 'nayed@gmail.com',
                 'password' => bcrypt('1234'),
                 'group_id' => '1',
                 'category_id' => '1',
@@ -27,7 +27,7 @@ class UserTableSeeder extends Seeder
         User::create(
             [
                 'name' => 'Kevin',
-                'login' => 'kevin@gmail.com',
+                'email' => 'kevin@gmail.com',
                 'password' => bcrypt('1234'),
                 'group_id' => '2',
                 'category_id' => '2',
