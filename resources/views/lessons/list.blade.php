@@ -3,10 +3,15 @@
 @section('content')
  @if (count($lessons) > 0)
         <div class="panel panel-default">
+            
             <div class="panel-heading">
                 Liste des cours
             </div>
+            <form action="/lessons/add" method="GET">
+                {{ csrf_field() }}
 
+                 <button>Ajouter une leçon</button>
+            </form>
             <div class="panel-body">
                 <table class="table table-striped task-table">
 
@@ -28,17 +33,16 @@
                                     <div>{{ $lesson->name }}</div>
                                 </td>
                                  <td class="table-text">
-                                    <div>{{ $lesson->content }}</div>
+                                    <div>{!! $lesson->content !!}</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>{{ $lesson->date }}</div>
+                                    <div>{{ $lesson->created_at }}</div>
                                 </td>
                                 <td>
-                                        <form action="/lessons/edit/{{ $lesson->id }}" method="POST">
+                                        <form action="/lessons/edit/{{ $lesson->id }}" method="GET">
                                             {{ csrf_field() }}
-                                            {{ method_field('POST') }}
-                                
-                                            <button>Editer cours</button>
+
+                                            <button>Editer une leçon</button>
                                         </form>
                                     </td>
 

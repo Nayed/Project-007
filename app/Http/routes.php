@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/lessons', 'LessonController@index');
 Route::get('/lessons/list', 'LessonController@index');
 Route::get('/lessons/edit/{id}', 'LessonController@edit');
 Route::post('/lessons/update', 'LessonController@update');
+Route::get('/lessons/add', 'LessonController@add');
+Route::post('/lessons/add_lesson', 'LessonController@add_lesson');
+

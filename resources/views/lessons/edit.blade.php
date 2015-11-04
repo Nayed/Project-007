@@ -3,16 +3,44 @@
 @section('content')
 
 
-<form method="POST" action="/lessons/update" accept-charset="UTF-8">
-		{!! csrf_field() !!} 
-		
-		<input name="id" type="hidden" id="id" value="{{$lesson->id}}" >   
-		<label for="nom">Nom : </label>    
-		<input name="name" type="text" id="name" value="{{$lesson->name}}" > </br>   
-		
-	    <label for="nom">Contenu </label>    
-		<textarea name="content" id="content" rows="5" cols="10" > {{$lesson->content}}  </textarea>    
 
-		<input type="submit" value="Envoyer !">	
-</form>
+
+ {!! Form::open(array('url' => '/lessons/update', 'method' => 'POST', 'files'=>true)) !!}
+ 
+  {!! Form::hidden('id',$lesson->id);!!}
+
+ 
+ {!! Form::label('name', 'Nom');!!}
+ {!! Form::text('name',$lesson->name);!!}
+  </br>
+ {!! Form::label('content', 'Contenu');!!}
+ {!! Form::textarea('content', $lesson->content, array('id' => 'trumbowyg-demo')) !!}
+
+   </br>
+
+  {!! Form::label('category', 'Catégories du groupe');!!}
+  {!! Form::select('category', $list_group,$lesson->category_id  ); !!}
+
+
+ {!! Form::file('image');!!}
+ 
+  {!! Form::submit('Click Me!'); !!}
+ 
+
+ {!! Form::close() !!}
+{!! HTML::script('js/trumbowyg.js'); !!}
+
+{!! HTML::image('uploads/75516.jpg')!!}
+
+<script>
+
+$('#trumbowyg-demo').trumbowyg();
+</script>
+
+@stop
+
+
+
+
+
 @stop
