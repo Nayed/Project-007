@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,11 @@
 
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link rel="stylesheet" href="{{ asset("css/mdl-custom.css") }}">
+
+	<link rel="stylesheet" href="{{ asset("css/app.css") }}">
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -18,49 +23,40 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
-<body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
-			</div>
-
-			<div class="collapse navbar-collapse" id="navbar">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Welcome</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					@if(auth()->guest())
-						@if(!Request::is('auth/login'))
-							<li><a href="{{ url('/auth/login') }}">Login</a></li>
-						@endif
-						@if(!Request::is('auth/register'))
-							<li><a href="{{ url('/auth/register') }}">Register</a></li>
-						@endif
-					@else
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
-							</ul>
-						</li>
-					@endif
-				</ul>
-			</div>
+<body class="{{ bodyClass() }}">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	<header class="mdl-layout__header">
+		<div class="mdl-layout__header-row">
+			<!-- Title -->
+			<span class="mdl-layout-title">Team 007</span>
+			<!-- Add spacer, to align navigation to the right -->
+			<div class="mdl-layout-spacer"></div>
+			<!-- Navigation. We hide it in small screens. -->
+			<nav class="mdl-navigation mdl-layout--large-screen-only">
+				<a class="mdl-navigation__link" href="">Logout</a>
+			</nav>
 		</div>
-	</nav>
-
+	</header>
+	<div class="mdl-layout__drawer">
+		<span class="mdl-layout-title">Bonjour Admin</span>
+		<nav class="mdl-navigation">
+			<a class="mdl-navigation__link" href="">Ajouter un cours</a>
+			<a class="mdl-navigation__link" href="">Ajouter des notes</a>
+			<a class="mdl-navigation__link" href="">Ajouter un flash info</a>
+		</nav>
+	</div>
 	@yield('content')
-
+</div>
 	<!-- Scripts -->
+
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+	<script src="/js/wow.min.js"></script>
+
+	<script src="/js/main.js"></script>
+
+
+
 </body>
 </html>

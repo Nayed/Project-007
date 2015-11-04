@@ -1,2 +1,25 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "mixins.scss";
+@import "font.scss";
+@import "header.scss";
+@import "login-form.scss";
+@import "timeline.scss";
+@import "timeline-guid.scss";
+@import "nav.scss";
+
+body,html {
+  @include clearfix;
+}
+body {
+  font-family: $font !important;
+  &.auth-login {
+    header {
+      display: none;
+    }
+  }
+  .mdl-layout {
+    height: auto;
+  }
+}
+

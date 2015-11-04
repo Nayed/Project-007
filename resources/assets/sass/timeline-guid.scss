@@ -1,0 +1,23 @@
+.timeline-guid {
+  max-width: 1080px;
+  margin: 25px auto;
+  &.is-visible {
+    position: fixed;
+    top: 60px;
+    width: 100px;
+    text-align: center;
+    right: 15px;
+    max-width: inherit;
+    background: white;
+    z-index: 999;
+  }
+  button {
+    margin-bottom: 15px;
+    a {
+      position: relative;
+      z-index: 999;
+      display: block;
+      color: #000;
+    }
+  }
+}
