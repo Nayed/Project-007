@@ -23,5 +23,5 @@ Route::get('/lessons/add', 'LessonController@add');
 Route::post('/lessons/add_lesson', 'LessonController@add_lesson');
 
 Route::get('/home/index', 'HomeController@index');
-Route::get('/home/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 

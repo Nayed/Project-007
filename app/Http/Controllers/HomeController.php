@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index(Request $request){
         $lesson = Lesson::where('user_id', $request->user()->id)->get();
-
+        
         return view('home.index', [
             'lessons' => $lesson,
         ]);
