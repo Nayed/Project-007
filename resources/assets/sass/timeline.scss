@@ -14,8 +14,9 @@
     .article-date {
       position: absolute;
       right: 460px;
-      background: white;
-      border: 1px solid grey;
+      background: #E74C3C;
+      color: #fff;
+      border: 1px solid #1A2530;
       width: 150px;
       text-align: center;
       @include transition(transform .5s, opacity 1s);
@@ -24,6 +25,9 @@
       &.is-visible {
         @include scale(1);
         visibility: visible;
+      }
+      &:hover {
+        @include scale(1.2);
       }
       p {
         margin: 0;
@@ -51,11 +55,13 @@
   article {
     width: 300px;
     min-height: 215px;
-    border: 1px solid #ccc;
+    border: 1px solid #1A2530;
     margin: auto;
     float: left;
     position: relative;
-    @include transition(transform .5s, opacity 1s);
+    z-index: 998;
+    padding: 25px 0;
+    @include transition(transform .5s, all 1s);
     @include translate(0, 100px);
     @include scale(0.5);
     opacity: 0;
@@ -69,6 +75,7 @@
     &:after {
       content: '';
       position: absolute;
+      z-index: 997;
       top: 96px;
       width: 20px;
       height: 20px;
@@ -79,6 +86,7 @@
     &:before {
       content: '';
       position: absolute;
+      z-index: 997;
       top: 105px;
       height: 2px;
       background: #1A2530;
@@ -126,6 +134,10 @@
       background-image: url("/img/icons/doc.png");
       margin: 0 5px;
     }
+    .note-wrapper {
+      text-align: center;
+      margin: 15px auto;
+    }
     .note {
       display: inline-block;
       width: 50px;
@@ -141,6 +153,10 @@
       &.not {
         font-size: 18px;
       }
+    }
+    a.doc-link {
+      max-width: 50px;
+      display: inline-block;
     }
   }
   .timeline-post-button {

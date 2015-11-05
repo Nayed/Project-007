@@ -23,5 +23,11 @@ body {
   .mdl-layout {
     height: auto;
   }
+  .mdl-layout__obfuscator {
+    z-index: 9997;
+  }
+  .mdl-layout__drawer {
+    z-index: 9998;
+  }
 }
 

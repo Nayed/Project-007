@@ -1,5 +1,6 @@
-header {
+header#header {
   position: fixed;
+  z-index: 9999;
   .material-icons {
     color: #E74C3C;
   }

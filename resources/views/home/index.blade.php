@@ -2,7 +2,7 @@
 
 @section('content')
 
- <div class="timeline-guid timeline-post">
+ <div class="timeline-guid">
      @unless ($lessons->isEmpty())
 
              @foreach($lessons as $lesson)
@@ -40,20 +40,24 @@
                          <div class="summary">
                              {{ $lesson->content }}
                          </div>
+                         <div class="note-wrapper">
+                             @if ( isset($user->section->note))
+                                 <span class="note not">{{$user->section->note}}</span>
+                             @else
+                                 <span class="note not">N/A</span>
+                             @endif
+                         </div>
                          <div class="doc-wrapper">
 
                          @unless ($lesson->medias->isEmpty())
                                  @foreach($lesson->medias as $media)
-                                     <i class="icon-doc"></i>
-                                     {{ $media->name }}
+                                     <a href="{{ $media->path }}" class="doc-link">
+                                         <i class="icon-doc"></i>
+                                         {{ $media->name }}
+                                     </a>
                                  @endforeach
                          @endunless
 
-                         @if ( isset($user->section->note))
-                             <span class="note not">{{$user->section->note}}</span>
-                         @else
-                             <span class="note not">N/A</span>
-                         @endif
                          </div>
 
 

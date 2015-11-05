@@ -11,6 +11,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	<link rel="stylesheet" href="{{ asset("css/mdl-custom.css") }}">
+	<link rel="stylesheet" href="{{ asset("css/jquery.fancybox-1.3.4.css") }}">
 
 	<link rel="stylesheet" href="{{ asset("css/app.css") }}">
 	<!-- Fonts -->
@@ -31,7 +32,7 @@
 </head>
 <body class="{{ bodyClass() }}">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-	<header class="mdl-layout__header">
+	<header class="mdl-layout__header" id="header">
 		<div class="mdl-layout__header-row">
 			<!-- Title -->
 			<span class="mdl-layout-title">Team 007</span>
@@ -55,7 +56,7 @@
 		
 		@if (Auth::user()->group_id == 1)
 		<nav class="mdl-navigation">
-			<a class="mdl-navigation__link" href="">Ajouter un cours</a>
+			<a class="mdl-navigation__link" href="/lessons/add">Ajouter un cours</a>
 			<a class="mdl-navigation__link" href="">Ajouter des notes</a>
 			<a class="mdl-navigation__link" href="">Ajouter un flash info</a>
 			<a class="mdl-navigation__link" href="/users/create">Ajouter un utilisateur</a>
@@ -72,6 +73,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
 <script src="/js/wow.min.js"></script>
+<script src="/js/jquery.fancybox-1.3.4.pack.min.js"></script>
+<script src="/js/jquery.easing-1.3.pack.js"></script>
+<script src="/js/jquery.mousewheel-3.0.4.pack.js"></script>
 
 <script src="/js/main.js"></script>
 
