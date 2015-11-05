@@ -28,3 +28,6 @@ Route::get('/home', 'HomeController@index');
 Route::get('/users', 'UserController@index');
 Route::get('/users/create', 'UserController@create');
 Route::post('/user/store', 'UserController@store');
+
+Route::get('infos/create', 'InfoController@create');
+Route::post('info/store', 'InfoController@store');

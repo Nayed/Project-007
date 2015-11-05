@@ -89,7 +89,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $groups = Group::all(['id', 'name']);
+        $categories = Category::all(['id', 'name']);
+        return view('users.edit', compact('user', 'groups', 'categories'));
     }
 
     /**
@@ -101,7 +104,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
