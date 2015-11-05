@@ -52,11 +52,16 @@
 	@if (Auth::check())
 	<div class="mdl-layout__drawer">
 		<span class="mdl-layout-title">Bonjour {!! Auth::user()->name !!}</span>
+		
+		@if (Auth::user()->group_id == 1)
 		<nav class="mdl-navigation">
 			<a class="mdl-navigation__link" href="">Ajouter un cours</a>
 			<a class="mdl-navigation__link" href="">Ajouter des notes</a>
 			<a class="mdl-navigation__link" href="">Ajouter un flash info</a>
+			<a class="mdl-navigation__link" href="/users/create">Ajouter un utilisateur</a>
+			<a class="mdl-navigation__link" href="/users">Liste des utilisateurs</a>
 		</nav>
+		@endif
 	</div>
 	@endif
 	@yield('content')
