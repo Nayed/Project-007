@@ -16,13 +16,13 @@ class CategoryTableSeeder extends Seeder
         
         Category::create(
             [
-                'name' => 'Developpment',
+                'name' => 'Developpement',
             ]
         );
         
         Category::create(
             [
-                'name' => 'Reseau',
+                'name' => 'Administrateur',
             ]
         );
         

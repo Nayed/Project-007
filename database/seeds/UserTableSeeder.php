@@ -33,5 +33,25 @@ class UserTableSeeder extends Seeder
                 'category_id' => '2',
             ]
         );
+        
+        User::create(
+            [
+                'name' => 'Quentin P',
+                'email' => 'quentinp@gmail.com',
+                'password' => bcrypt('1234'),
+                'group_id' => '1',
+                'category_id' => '2',
+            ]
+        );
+        
+        User::create(
+            [
+                'name' => 'Quentin E',
+                'email' => 'quentine@gmail.com',
+                'password' => bcrypt('1234'),
+                'group_id' => '2',
+                'category_id' => '3',
+            ]
+        );
     }
 }

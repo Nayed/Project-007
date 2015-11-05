@@ -15,11 +15,11 @@ class GroupTableSeeder extends Seeder
         DB::table('groups')->truncate();
         
         Group::create(
-            ['name' => 'Teacher']
+            ['name' => 'Professeur']
         );
         
          Group::create(
-            ['name' => 'Student']
+            ['name' => 'Étudiant']
         );
     }
 }
