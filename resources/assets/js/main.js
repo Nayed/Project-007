@@ -17,4 +17,18 @@ $( document ).ready(function() {
         $('html, body').animate( { scrollTop: scroll }, speed ); // Go
         return false;
     });
+
+    $(".lightbox").fancybox({
+        openEffect: 'elastic',
+        closeEffect: 'elastic',
+        autoSize: true,
+        type: 'iframe',
+        iframe: {
+            preload: false // fixes issue with iframe and IE
+        }
+    });
+    $('.mdl-layout').on('click', function() {
+        $.fancybox.close();
+    });
+
 });

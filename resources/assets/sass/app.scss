@@ -29,5 +29,13 @@ body {
   .mdl-layout__drawer {
     z-index: 9998;
   }
+  iframe.fancybox-iframe {
+    height: 100%;
+    position: relative;
+    z-index: 999;
+  }
+  .fancybox-inner {
+    overflow: hidden !important;
+  }
 }
 
