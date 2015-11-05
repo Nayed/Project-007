@@ -3,32 +3,31 @@
 @section('content')
 
  <div class="timeline-guid timeline-post">
-     <button id="semaine-1" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-         <a href="#article-s1"> Semaine 1</a>
-     </button>
-     <button id="semaine-2" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-         <a href="#article-s2"> Semaine 2</a>
-     </button>
-     <button id="semaine-3" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-         <a href="#article-s3"> Semaine 3</a>
-     </button>
-     <button id="semaine-4" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-         <a href="#article-s4"> Semaine 4</a>
-     </button>
-     <button id="semaine-5" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-         <a href="#article-s5"> Semaine 5</a>
-     </button>
+     @unless ($lessons->isEmpty())
 
+             @foreach($lessons as $lesson)
+                 <button id="semaine-{{ $lesson->id }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                     <a href="#article-s{{ $lesson->id }}"> Semaine {{ $lesson->id }}</a>
+                 </button>
+             @endforeach
+
+     @endunless
  </div>
 
      @unless ($lessons->isEmpty())
          <div id="timeline">
 
-                 @foreach($lessons as $lesson)
-                 <div class="article-wrapper" id="article-s1">
+                 @foreach($lessons as $index => $lesson)
+
+                 @if ( $index % 2 == 0 )
+                     <div class="article-wrapper" id="article-s{{ $lesson->id }}">
+                 @else
+                     <div class="article-wrapper odd" id="article-s{{ $lesson->id }}">
+                 @endif
+
                      <div class="timeline-post article-date">
-                         <p> Semaine X </p>
-                         <span>{{ $lesson->created_at }}</span>
+                         <p> Semaine {{ $lesson->id }} </p>
+                         <span>{{ date('F d, Y', strtotime($lesson->created_at)) }}</span>
                      </div>
                      <article class="timeline-post">
                          <button class="timeline-post-button mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
@@ -41,15 +40,22 @@
                          <div class="summary">
                              {{ $lesson->content }}
                          </div>
+                         <div class="doc-wrapper">
+
                          @unless ($lesson->medias->isEmpty())
-                             <div class="doc-wrapper">
                                  @foreach($lesson->medias as $media)
                                      <i class="icon-doc"></i>
                                      {{ $media->name }}
                                  @endforeach
-                             </div>
                          @endunless
-                         <span class="note">20</span>
+
+                         @if ( isset($user->section->note))
+                             <span class="note not">{{$user->section->note}}</span>
+                         @else
+                             <span class="note not">N/A</span>
+                         @endif
+                         </div>
+
 
                      </article>
                  </div>

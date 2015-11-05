@@ -16,7 +16,7 @@
         @endif
 
         <div class="mdl-card__supporting-text">
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/store') }}">
+            <form class="form-horizontal" role="form" autocomplete="off" method="POST" action="{{ url('/user/store') }}">
                 {!! csrf_field() !!}
 
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
