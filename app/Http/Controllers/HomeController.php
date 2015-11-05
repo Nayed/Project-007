@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Lesson;
+use App\Media;
 use App\Category;
 use Input;
 use Validator;
@@ -24,10 +25,11 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
-        $lesson = Lesson::where('user_id', $request->user()->id)->get();
+       // $lesson = Lesson::where('user_id', $request->user()->id)->get()->medias;
+       $lessons = Lesson::all();
 
         return view('home.index', [
-            'lessons' => $lesson,
+            'lessons' => $lessons,
         ]);
     }
 
