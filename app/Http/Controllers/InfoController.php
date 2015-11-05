@@ -6,30 +6,20 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Lesson;
-use App\Media;
-use App\Category;
-use App\Info;
-use Input;
-use Validator;
-use Redirect;
-use Auth;
-use DB;
-use Storage;
-use Session;
 
-class HomeController extends Controller
+use \Validator;
+use App\Info;
+
+class InfoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request){
-       // $lesson = Lesson::where('user_id', $request->user()->id)->get()->medias;
-        $lessons = Lesson::all();
-        $infos = Info::all();
-        return view('home.index', compact('lessons', 'infos'));
+    public function index()
+    {
+        //
     }
 
     /**
@@ -39,7 +29,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('infos.create');
     }
 
     /**
@@ -50,7 +40,25 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'week' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/')
+                ->withInput()
+                ->withErrors($validator);
+        }
+        //dd($request);
+        $info = new Info;
+        $info->title = $request->title;
+        $info->content = $request->content;
+        $info->week = $request->week;
+        $info->save();
+        
+        return redirect('/home');
     }
 
     /**
