@@ -38,19 +38,27 @@
 			<!-- Add spacer, to align navigation to the right -->
 			<div class="mdl-layout-spacer"></div>
 			<!-- Navigation. We hide it in small screens. -->
+			@if (Auth::check())
 			<nav class="mdl-navigation mdl-layout--large-screen-only">
-				<a class="mdl-navigation__link" href="">Logout</a>
+				<a class="mdl-navigation__link" href="/auth/logout">Logout</a>
 			</nav>
+			@else
+			<nav class="mdl-navigation mdl-layout--large-screen-only">
+				<a class="mdl-navigation__link" href="/">Login</a>
+			</nav>
+			@endif
 		</div>
 	</header>
+	@if (Auth::check())
 	<div class="mdl-layout__drawer">
-		<span class="mdl-layout-title">Bonjour Admin</span>
+		<span class="mdl-layout-title">Bonjour {!! Auth::user()->name !!}</span>
 		<nav class="mdl-navigation">
 			<a class="mdl-navigation__link" href="">Ajouter un cours</a>
 			<a class="mdl-navigation__link" href="">Ajouter des notes</a>
 			<a class="mdl-navigation__link" href="">Ajouter un flash info</a>
 		</nav>
 	</div>
+	@endif
 	@yield('content')
 </div>
 <!-- Scripts -->
