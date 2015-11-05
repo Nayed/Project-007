@@ -20,8 +20,6 @@
 	{!! HTML::style('css/trumbowyg.css') !!}
 	
 		<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script> 
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -70,13 +68,18 @@
 </div>
 <!-- Scripts -->
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
-<script src="/js/wow.min.js"></script>
-<script src="/js/jquery.fancybox-1.3.4.pack.min.js"></script>
-<script src="/js/jquery.easing-1.3.pack.js"></script>
+<script src="/js/jquery-1.10.1.min.js"></script>
+
 <script src="/js/jquery.mousewheel-3.0.4.pack.js"></script>
+
+<script src="/js/jquery.fancybox.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+
+
+<script src="/js/wow.min.js"></script>
 
 <script src="/js/main.js"></script>
 

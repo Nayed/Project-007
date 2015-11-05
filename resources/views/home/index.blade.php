@@ -51,7 +51,7 @@
 
                          @unless ($lesson->medias->isEmpty())
                                  @foreach($lesson->medias as $media)
-                                     <a href="{{ $media->path }}" class="doc-link">
+                                     <a href="/uploads/{{ $media->path }}" data-fancybox-type="iframe" class="doc-link lightbox">
                                          <i class="icon-doc"></i>
                                          {{ $media->name }}
                                      </a>
