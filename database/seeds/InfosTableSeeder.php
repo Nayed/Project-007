@@ -18,7 +18,7 @@ class InfosTableSeeder extends Seeder
             [
                 'title' => 'DS dev',
                 'content' => "Réviser le modèle MVC",
-                'week' => 'Semaine 10',
+                'week' => '10',
             ]
         );
     }
