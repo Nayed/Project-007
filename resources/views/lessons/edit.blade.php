@@ -22,20 +22,28 @@
   {!! Form::select('category', $list_group,$lesson->category_id  ); !!}
 
 
- {!! Form::file('image');!!}
-   @unless ($lesson->medias->isEmpty())
-        @foreach($lesson->medias as $media)
-                {!! Form::hidden('id',$media->id);!!}
-                {!! Form::label('Titre du document', 'Titre du document');!!}
-                {!! Form::text('title_document',$media->name);!!}
-                {!! HTML::image('uploads/'.$media->path)!!}
-        @endforeach
- @endunless
+{!! Form::file('image');!!}
  
-  {!! Form::submit('Click Me!'); !!}
+{!! Form::submit('Click Me!'); !!}
  
 
  {!! Form::close() !!}
+ 
+ 
+    @unless ($lesson->medias->isEmpty())
+        @foreach($lesson->medias as $media)
+            {!! Form::open(array('url' => '/lessons/update_image', 'method' => 'POST', 'files'=>true)) !!}
+                {!! Form::hidden('id',$media->id);!!}
+                {!! Form::label('Titre du document', 'Titre du document');!!}
+                {!! Form::text('title_document',$media->name);!!}
+                {!! Form::file('image');!!}
+                {!! HTML::image('uploads/'.$media->path)!!}
+                {!! Form::submit('Click Me!'); !!}
+ 
+
+ {!! Form::close() !!}
+        @endforeach
+ @endunless
 
 
 

@@ -4,7 +4,6 @@
 <section id="list-user">
 
  @if (count($users) > 0)
-<<<<<<< Updated upstream
      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
          <thead>
          <tr>
@@ -20,14 +19,14 @@
                      {{ $user->name }}
                  </td>
                  <td class="table-text">
-                     {{ $user->name }}
+                     {{ $user->category->name }}
                  </td>
              </tr>
          @endforeach
          </tbody>
      </table>
 
-=======
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 Liste des users
