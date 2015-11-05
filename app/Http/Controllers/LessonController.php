@@ -45,9 +45,7 @@ class LessonController extends Controller
     }
     
     public function update(Request $request){
-        //dd(Input::all());
         $inputs = Input::all();
-        
         $rules = array(
             'name' => 'required'
             
@@ -57,16 +55,17 @@ class LessonController extends Controller
         if($validation->fails()){
             exit('erreur');
         }
-    
-               
 
-        
         $lesson = Lesson::find(Auth::user()->id );
         $lesson->name = e($request->input('name'));
         $lesson->content = ($request->input('content'));
         $lesson->save();
         
-        dd(Input::file('image'));
+        $media = Media::find('lesson_id',$request->input('id'));
+        dd($media);
+               // $lesson = Lesson::where('user_id', $request->user()->id)->get();
+
+        
         $file = array('image' => Input::file('image'));
 
         if (Input::file('image')->isValid()) {
@@ -91,11 +90,46 @@ class LessonController extends Controller
 
         
     }
+     public function update_image(Request $request){
+        $inputs = Input::all();
+
+        $files = Input::file('images');
+
+        $file = array('image' => Input::file('image'));
+        if(!empty($request->input('image'))){
+             if ($file->isValid()) {
+                  $destinationPath = 'uploads'; // upload path
+                  $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+                  $fileName = rand(11111,99999).'.'.$extension; // renameing image
+    
+                  if (!Input::file('image')->move($destinationPath, $fileName))
+                    {
+                        die("Couldn't rename file");
+                    }
+                    $media = Media::find($request->input('id') );
+                    $media->path = e($fileName);
+                    $media->save();
+                    
+            }
+        
+        }
+           
+       
+         
+        $media = Media::find($request->input('id'));
+        
+        $media->name = e($request->input('title_document'));
+        $media->save();
+
+        
+        return Redirect::back();
+      
+
+        
+    }
     
     public function add(){
-        
-        
-      //  $group = DB::table('groups')->select('id')->get();
+
         $group = Category::lists('name', 'id');
 
         return view('lessons.add',[
@@ -104,9 +138,7 @@ class LessonController extends Controller
       
     }
     
-    
-    
-    
+
     public function add_lesson(Request $request){
         
         
@@ -140,7 +172,6 @@ class LessonController extends Controller
           $validator = Validator::make(array('file'=> $file), $rules);
           if(!$validator->fails()){
             $destinationPath = 'uploads';
-            
             $extension = $file->getClientOriginalExtension(); // getting image extension
             $fileName = rand(11111,99999).'.'.$extension; // renameing image
 
@@ -152,8 +183,7 @@ class LessonController extends Controller
                 $media->path = $fileName;
                 $media->name = e($request->input('title_document'));
                 $media->save();
-            
-            
+   
           }
         }
         if($uploadcount == $file_count){
