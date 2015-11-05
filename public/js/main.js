@@ -13,7 +13,8 @@ $( document ).ready(function() {
     $('.mdl-button a').click( function() { // Au clic sur un élément
         var page = $(this).attr('href'); // Page cible
         var speed = 750; // Durée de l'animation (en ms)
-        $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+        var scroll = $(page).offset().top - 100;
+        $('html, body').animate( { scrollTop: scroll }, speed ); // Go
         return false;
     });
 });

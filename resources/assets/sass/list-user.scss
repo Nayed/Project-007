@@ -1,0 +1,20 @@
+#list-user {
+  width: 1080px;
+  margin: auto;
+  padding-top: 100px;
+  table {
+    width: 100%;
+    margin: auto;
+    th,td {
+      text-align: center;
+    }
+  }
+  button{
+    display: block;
+    margin: 25px auto;
+    background: #1A2530;
+    a {
+      color: #E74C3C;
+    }
+  }
+}
