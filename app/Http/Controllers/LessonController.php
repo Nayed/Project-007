@@ -62,7 +62,6 @@ class LessonController extends Controller
         $lesson->save();
         
         $media = Media::find('lesson_id',$request->input('id'));
-        dd($media);
                // $lesson = Lesson::where('user_id', $request->user()->id)->get();
 
         
@@ -113,8 +112,7 @@ class LessonController extends Controller
             }
         
         }
-           
-       
+
          
         $media = Media::find($request->input('id'));
         
@@ -123,9 +121,7 @@ class LessonController extends Controller
 
         
         return Redirect::back();
-      
 
-        
     }
     
     public function add(){
@@ -143,7 +139,6 @@ class LessonController extends Controller
         
         
         $inputs = Input::all();
-        
         $rules = array(
             'name' => 'required',
             'content' => 'required'

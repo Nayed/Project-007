@@ -37,3 +37,12 @@ Route::post('/user/store', 'UserController@store');
 
 Route::get('infos/create', 'InfoController@create');
 Route::post('info/store', 'InfoController@store');
+
+Route::get('notes/', 'NoteController@index');
+Route::get('notes/index', 'NoteController@index');
+Route::post('notes/list_eleve', 'NoteController@list_eleve');
+Route::get('notes/add_note/{id}', 'NoteController@add_note');
+
+
+
+
