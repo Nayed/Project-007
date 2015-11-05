@@ -38,9 +38,15 @@
 			<!-- Add spacer, to align navigation to the right -->
 			<div class="mdl-layout-spacer"></div>
 			<!-- Navigation. We hide it in small screens. -->
+			@if (Auth::check())
 			<nav class="mdl-navigation mdl-layout--large-screen-only">
-				<a class="mdl-navigation__link" href="">Logout</a>
+				<a class="mdl-navigation__link" href="/auth/logout">Logout</a>
 			</nav>
+			@else
+			<nav class="mdl-navigation mdl-layout--large-screen-only">
+				<a class="mdl-navigation__link" href="/">Login</a>
+			</nav>
+			@endif
 		</div>
 	</header>
 	<div class="mdl-layout__drawer">
