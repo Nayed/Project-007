@@ -40,8 +40,14 @@ Route::post('info/store', 'InfoController@store');
 
 Route::get('notes/', 'NoteController@index');
 Route::get('notes/index', 'NoteController@index');
-Route::post('notes/list_eleve', 'NoteController@list_eleve');
-Route::get('notes/add_note/{id}', 'NoteController@add_note');
+Route::get('notes/list_eleve/{id}', 'NoteController@list_eleve');
+Route::get('notes/add_note/{id_lesson}/{id_eleve}', 'NoteController@add_note');
+Route::post('notes/update_note', 'NoteController@update_note');
+Route::post('notes/redirect_note', 'NoteController@redirect_note');
+
+
+
+
 
 
 

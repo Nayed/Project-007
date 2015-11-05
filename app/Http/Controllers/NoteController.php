@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Lesson;
 use App\User;
-
+use App\Note;
 use App\Category;
 use App\Media;
 use Input;
@@ -37,32 +37,33 @@ class NoteController extends Controller
         ]);
     }
     
+   
+    public function redirect_note()
+    {
+      
+       $inputs = Input::all();
+   
+      // $lesson = Lesson::findOrFail($inputs['lessons']);
+       
+        // return redirect()->route('notes/list_eleve',[1]);
+       return redirect()->action('NoteController@list_eleve', [$inputs['lessons']]);
+
+
+
+    }
     
-     public function list_eleve(Request $request)
+    public function list_eleve($id_lecon)
     {
        $inputs = Input::all();
    
-       $lesson = Lesson::findOrFail($inputs['lessons']);
+       $lesson = Lesson::findOrFail($id_lecon);
        $users = User::where('category_id',$lesson->category_id)->get();
        
        return view('notes.list_eleve', [
             'users' => $users,
+            'id_lecon' => $id_lecon
         ]);
-
         
-        
-        
-    }
-    public function list_eleves(Request $request)
-    {
-       $inputs = Input::all();
-   
-       $lesson = Lesson::findOrFail($inputs['lessons']);
-       $users = User::where('category_id',$lesson->category_id)->get();
-       
-       return view('notes.list_eleves', [
-            'users' => $users,
-        ]);
 
     }
     
@@ -70,13 +71,12 @@ class NoteController extends Controller
 
      public function add_note($id)
     {
-      /* $inputs = Input::all();
-       
+
    
-       $lesson = Lesson::findOrFail($inputs['lessons']);
-       $users = User::where('category_id',$lesson->category_id)->get();*/
-       
-       return view('notes.add_note');
+       $user = User::findOrFail($id);
+       return view('notes.add_notes', [
+            'user' => $user,
+        ]); 
 
     }
     /**
@@ -129,9 +129,28 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_note(Request $request)
     {
-        //
+       
+        $inputs = Input::all();
+        $rules = array(
+            'note' => 'required',
+        );
+        
+        $validation = Validator::make($inputs,$rules);
+        if($validation->fails()){
+            exit('erreur');
+        }
+        
+            $note = new Note;
+            $note->user_id = Auth::user()->id ;
+            $lesson->name = e($request->input('name'));
+            $lesson->date_start = e($request->input('date_start'));
+            $lesson->content = ($request->input('content'));
+            $lesson->category_id = e($request->input('category'));
+            $lesson->save();
+       
+       
     }
 
     /**

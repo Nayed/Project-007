@@ -28,7 +28,7 @@
                                 </td>
                               
                                 <td>
-                                        <form action="/notes/add_note/{{ $user->id }}" method="GET">
+                                        <form action="/notes/add_note/{{$id_lecon}}/{{ $user->id }}" method="GET">
                                             {{ csrf_field() }}
 
                                             <button>Ajouter une note</button>

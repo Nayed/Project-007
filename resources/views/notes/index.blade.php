@@ -6,7 +6,7 @@
 
 
 
- {!! Form::open(array('url' => '/notes/list_eleve', 'method' => 'POST', 'files'=>true)) !!}
+ {!! Form::open(array('url' => '/notes/redirect_note', 'method' => 'POST', 'files'=>true)) !!}
 
 
   {!! Form::label('cours', 'Liste de vos cours');!!}

@@ -92,11 +92,12 @@ class LessonController extends Controller
      public function update_image(Request $request){
         $inputs = Input::all();
 
-        $files = Input::file('images');
+        //$files = Input::file('image');
+        
 
         $file = array('image' => Input::file('image'));
-        if(!empty($request->input('image'))){
-             if ($file->isValid()) {
+        if (Input::has('image')){
+            dd($file);
                   $destinationPath = 'uploads'; // upload path
                   $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
                   $fileName = rand(11111,99999).'.'.$extension; // renameing image
@@ -108,8 +109,7 @@ class LessonController extends Controller
                     $media = Media::find($request->input('id') );
                     $media->path = e($fileName);
                     $media->save();
-                    
-            }
+
         
         }
 
