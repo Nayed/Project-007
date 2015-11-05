@@ -49,14 +49,16 @@
 			@endif
 		</div>
 	</header>
+	@if (Auth::check())
 	<div class="mdl-layout__drawer">
-		<span class="mdl-layout-title">Bonjour Admin</span>
+		<span class="mdl-layout-title">Bonjour {!! Auth::user()->name !!}</span>
 		<nav class="mdl-navigation">
 			<a class="mdl-navigation__link" href="">Ajouter un cours</a>
 			<a class="mdl-navigation__link" href="">Ajouter des notes</a>
 			<a class="mdl-navigation__link" href="">Ajouter un flash info</a>
 		</nav>
 	</div>
+	@endif
 	@yield('content')
 </div>
 <!-- Scripts -->
