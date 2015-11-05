@@ -58,27 +58,37 @@ class LessonController extends Controller
             exit('erreur');
         }
     
+               
+
         
         $lesson = Lesson::find(Auth::user()->id );
-        
         $lesson->name = e($request->input('name'));
         $lesson->content = ($request->input('content'));
+        $lesson->save();
         
-   
-        if($lesson->save()){
-            
-        }
+        dd(Input::file('image'));
+        $file = array('image' => Input::file('image'));
+
+        if (Input::file('image')->isValid()) {
+              $destinationPath = 'uploads'; // upload path
+              $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+              $fileName = rand(11111,99999).'.'.$extension; // renameing image
+
+              if (!Input::file('image')->move($destinationPath, $fileName))
+                {
+                    die("Couldn't rename file");
+                }
+                $media = new Media();
+                $media->lesson_id = Auth::user()->id;
+                $media->path = e($fileName);
+                $media->name = e($request->input('title_document'));
+                $media->save();
+         }
+
         
         return Redirect::to('lessons/list');
       
 
-
-       
-       $lesson = Lesson::findOrFail($id);
-       
-        return view('lessons.edit',[
-            'lesson' => $lesson
-        ]);
         
     }
     
@@ -113,47 +123,51 @@ class LessonController extends Controller
             exit('erreur');
         }
         
+            $lesson = new Lesson();
+            $lesson->user_id = Auth::user()->id ;
+            $lesson->name = e($request->input('name'));
+            $lesson->date_start = e($request->input('date_start'));
+            $lesson->content = ($request->input('content'));
+            $lesson->category_id = e($request->input('category'));
+            $lesson->save();
         
-        $file = array('image' => Input::file('image'));
+        $files = Input::file('images');
+        $file_count = count($files);
+        // start count how many uploaded
+        $uploadcount = 0;
+        foreach($files as $file) {
+          $rules = array('file' => 'required'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
+          $validator = Validator::make(array('file'=> $file), $rules);
+          if(!$validator->fails()){
+            $destinationPath = 'uploads';
+            
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $fileName = rand(11111,99999).'.'.$extension; // renameing image
 
-        if (Input::file('image')->isValid()) {
-              $destinationPath = 'uploads'; // upload path
-              $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
-              $fileName = rand(11111,99999).'.'.$extension; // renameing image
+            $upload_success = $file->move($destinationPath, $fileName);
+            $uploadcount ++;
+            
+                $media = new Media();
+                $media->lesson_id = $lesson->id;
+                $media->path = $fileName;
+                $media->name = e($request->input('title_document'));
+                $media->save();
+            
+            
+          }
+        }
+        if($uploadcount == $file_count){
+            
+         /* Session::flash('success', 'Upload successfully'); 
+          return Redirect::to('upload');*/
 
-              if (!Input::file('image')->move($destinationPath, $fileName))
-                {
-                    die("Couldn't rename file");
-                }
-              // sending back with message
-              Session::flash('success', 'Upload successfully'); 
-            //  return Redirect::to('upload');
-         }else{
-             exit('stop');
-         }
-         
-
-        $lesson = new Lesson();
-        $lesson->user_id = Auth::user()->id ;
-        $lesson->name = e($request->input('name'));
-        $lesson->content = ($request->input('content'));
-        $lesson->category_id = e($request->input('category'));
-        $lesson->save();
+       
+        } 
         
-        
-        $media = new Media();
-        $media->lesson_id = $lesson->id;
-        $media->path = e($fileName);
-        $media->name = e($request->input('title_document'));
-        $media->save();
-
         return Redirect::to('lessons/list');
-      
+
         
     }
     
-    
-    
-    
-    
+
 }

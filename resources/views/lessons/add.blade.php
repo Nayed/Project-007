@@ -13,6 +13,9 @@
  {!! Form::label('name', 'Nom');!!}
  {!! Form::text('name');!!}
   </br>
+ {!! Form::label('date', 'Date du cours');!!}
+ {!! Form::text('date_start');!!}
+  </br>
  {!! Form::label('content', 'Contenu');!!}
  {!! Form::textarea('content', '', array('id' => 'trumbowyg-demo')) !!}
 
@@ -24,8 +27,8 @@
  {!! Form::label('Titre du document', 'Titre du document');!!}
  {!! Form::text('title_document');!!}
  </br>
- {!! Form::file('image');!!}
- 
+{!! Form::file('images[]', array('multiple'=>true)) !!} 
+
   {!! Form::submit('Click Me!'); !!}
  
 

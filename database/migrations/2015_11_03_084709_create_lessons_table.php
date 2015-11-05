@@ -17,7 +17,7 @@ class CreateLessonsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->longtext('content');
-            $table->date('date');
+            $table->date('date_start');
             $table->integer('category_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
             $table->timestamps();

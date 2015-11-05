@@ -23,14 +23,24 @@
 
 
  {!! Form::file('image');!!}
+   @unless ($lesson->medias->isEmpty())
+        @foreach($lesson->medias as $media)
+                {!! Form::hidden('id',$media->id);!!}
+                {!! Form::label('Titre du document', 'Titre du document');!!}
+                {!! Form::text('title_document',$media->name);!!}
+                {!! HTML::image('uploads/'.$media->path)!!}
+        @endforeach
+ @endunless
  
   {!! Form::submit('Click Me!'); !!}
  
 
  {!! Form::close() !!}
-{!! HTML::script('js/trumbowyg.js'); !!}
 
-{!! HTML::image('uploads/75516.jpg')!!}
+
+
+
+{!! HTML::script('js/trumbowyg.js'); !!}
 
 <script>
 
