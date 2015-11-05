@@ -12,7 +12,7 @@
                     <!-- Table Body -->
                     <tbody>
                         @foreach($lessons as $lesson)
-                           {{ $lesson->name }}
+                            {{ $lesson->user->name }}
                                 @unless ($lesson->medias->isEmpty())
                                   @foreach($lesson->medias as $media)
                                     {{ $media->name }}
