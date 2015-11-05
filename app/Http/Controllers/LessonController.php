@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Lesson;
 use App\Category;
+use App\Media;
 use Input;
 use Validator;
 use Redirect;
@@ -22,10 +23,7 @@ class LessonController extends Controller
     public function index(Request $request){
         
         $lesson = Lesson::where('user_id', $request->user()->id)->get();
-        
-       
-        
-        
+
         return view('lessons.list', [
             'lessons' => $lesson,
         ]);
@@ -116,7 +114,7 @@ class LessonController extends Controller
         }
         
         
-     $file = array('image' => Input::file('image'));
+        $file = array('image' => Input::file('image'));
 
         if (Input::file('image')->isValid()) {
               $destinationPath = 'uploads'; // upload path
@@ -133,28 +131,22 @@ class LessonController extends Controller
          }else{
              exit('stop');
          }
+         
 
-
-
-
-        $lesson = new lesson();
+        $lesson = new Lesson();
         $lesson->user_id = Auth::user()->id ;
         $lesson->name = e($request->input('name'));
         $lesson->content = ($request->input('content'));
         $lesson->category_id = e($request->input('category'));
-        
         $lesson->save();
         
         
+        $media = new Media();
+        $media->lesson_id = $lesson->id;
+        $media->path = e($fileName);
+        $media->name = e($request->input('title_document'));
+        $media->save();
 
-        
-       /* $lesson->name = e(Input::get('name'));
-        $lesson->content = e(Input::get('content'));
-        
-        if($lesson->save()){
-            
-        }
-        */
         return Redirect::to('lessons/list');
       
         

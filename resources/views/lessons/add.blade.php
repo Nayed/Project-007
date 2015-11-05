@@ -20,8 +20,10 @@
 
   {!! Form::label('category', 'Catégories du groupe');!!}
   {!! Form::select('category',  ($list_group)  ); !!}
- 
- 
+  </br>
+ {!! Form::label('Titre du document', 'Titre du document');!!}
+ {!! Form::text('title_document');!!}
+ </br>
  {!! Form::file('image');!!}
  
   {!! Form::submit('Click Me!'); !!}
