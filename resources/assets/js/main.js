@@ -25,6 +25,13 @@ $( document ).ready(function() {
         type: 'iframe',
         iframe: {
             preload: false // fixes issue with iframe and IE
+        },
+        helpers:
+        {
+            overlay:
+            {
+                css: { 'background': 'rgba(0, 0, 0, 0.5)' }
+            }
         }
     });
     $('.mdl-layout').on('click', function() {

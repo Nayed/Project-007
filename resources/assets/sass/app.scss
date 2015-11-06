@@ -48,5 +48,10 @@ body {
   .fancybox-inner {
     overflow: hidden !important;
   }
+  .fancybox-overlay {
+    width: 100% !important;
+    height: 100% !important;
+    position: fixed;
+  }
 }
 
