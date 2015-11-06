@@ -47,18 +47,14 @@
                         {!! Form::label('Titre du document', 'Titre du document');!!}
                         {!! Form::text('title_document',$media->name);!!}
                         {!! Form::file('image');!!}
-                        {!! HTML::image('uploads/'.$media->path)!!}
-                        {!! Form::submit('Click Me!'); !!}
+                        <a href="uploads/{{$media->path}}" class="lightbox"> Voir le document</a>
+                        {!! Form::submit('Envoyer', array('class' => 'send-doc')); !!}
 
 
                     @endforeach
                 @endunless
-
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-                    {!! Form::text('title_document', '', array('class' => 'mdl-textfield__input'));!!}
-                    {!! Form::label('Titre du document', 'Titre du document', array('class' => 'mdl-textfield__label'));!!}
-                </div>
-
+                <br>
+                <br>
                 {!! Form::submit('Valider', array('class' => 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored')); !!}
 
 
