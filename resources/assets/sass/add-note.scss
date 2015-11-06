@@ -1,5 +1,7 @@
 #add-note,
-#add-note-cours{
+#add-note-cours,
+#note-edit,
+#list-note{
   padding-top: 100px;
   width: 1080px;
   margin: auto;
@@ -12,4 +14,12 @@
   display:block;
   margin:auto;
   }
+    table {
+      width:100%;
+      td,th {
+        text-align:left;
+        height: 65px;
+        vertical-align:middle;
+      }
+    }
 }
