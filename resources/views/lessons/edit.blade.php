@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <section id="add-lesson">
         <div class="mdl-card mdl-shadow--2dp wrapper">
             @if (count($errors) > 0)
