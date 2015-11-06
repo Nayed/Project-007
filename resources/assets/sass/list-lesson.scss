@@ -1,0 +1,18 @@
+#list-lesson {
+    max-width:1080px;
+    margin:auto;
+    padding-top: 100px;
+    .mdl-data-table {
+        white-space: inherit;
+        td {
+        text-align:left;
+        }
+        th {
+        text-align:center;
+        }
+    }
+    .timeline-post-button {
+        display:block;
+        margin:25px auto;
+    }
+}
