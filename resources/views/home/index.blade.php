@@ -19,7 +19,7 @@
 
                      @foreach($lessons as $lesson)
                          <button id="semaine-{{ $lesson->id }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-                             <a href="#article-s{{ $lesson->id }}"> Semaine {{ $lesson->id }}</a>
+                             <a href="#article-s{{ $lesson->id }}"> Semaine {{ $lesson->name }}</a>
                          </button>
                      @endforeach
 
@@ -34,7 +34,7 @@
                  @endif
 
                      <div class="timeline-post article-date">
-                         <p> Semaine {{ $lesson->id }} </p>
+                         <p> Semaine {{ $lesson->name }} </p>
                          <span>{{ date('F d, Y', strtotime($lesson->created_at)) }}</span>
                      </div>
                      <article class="timeline-post">
