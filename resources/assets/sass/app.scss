@@ -53,9 +53,17 @@ body {
     width: 100% !important;
     height: 100% !important;
     position: fixed;
+    z-index: 9998;
+  }
+  .fancybox-wrap {
+  z-index:9999;
   }
   .logo {
     margin-left:15px;
   }
 }
 
+
+.fancybox-wrap {
+z-index:9999;
+}
