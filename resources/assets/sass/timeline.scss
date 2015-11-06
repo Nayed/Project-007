@@ -4,30 +4,49 @@
   background: linear-gradient(to right, rgba(153,153,153,0) 0%,rgba(3,3,3,0) 50%,rgba(0,0,0,1) 50.2%,rgba(5,5,5,0) 50.5%,rgba(229,229,229,0) 100%); /* W3C */
   @include clearfix;
   padding: 200px 0;
+  @include breakpoint(laptop) {
+    width: 960px;
+  }
+  @include breakpoint(tablet) {
+    width: 90%;
+    background: none;
+    padding: 85px 0;
+  }
   .article-wrapper {
     position: relative;
     float: left;
     width: 100%;
     margin-bottom: 150px;
-
+    @include breakpoint(tablet) {
+      margin-bottom: 50px;
+    }
     @include clearfix;
     .article-date {
       position: absolute;
       right: 460px;
-      background: #E74C3C;
-      color: #fff;
+      background: #fff;
+      color: #1A2530;
       border: 1px solid #1A2530;
       width: 150px;
       text-align: center;
       @include transition(transform .5s, opacity 1s);
       @include scale(0.5);
       visibility: hidden;
+      @include  breakpoint(tablet) {
+        position: static;
+        width: 100%;
+
+      }
       &.is-visible {
         @include scale(1);
         visibility: visible;
+
       }
       &:hover {
         @include scale(1.2);
+        @include  breakpoint(tablet) {
+          @include scale(1);
+        }
       }
       p {
         margin: 0;
@@ -40,6 +59,9 @@
       article {
         float: right;
         margin-right: 0;
+        @include  breakpoint(tablet) {
+          float: left;
+        }
         &:after {
           right: 0;
           left: -250px;
@@ -50,6 +72,12 @@
         }
       }
 
+    }
+    @include  breakpoint(tablet) {
+      &:before,
+      &:after {
+        display: none;
+      }
     }
   }
   article {
@@ -66,6 +94,13 @@
     @include scale(0.5);
     opacity: 0;
     visibility: hidden;
+    @include  breakpoint(tablet) {
+      width: 100%;
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
     &.is-visible {
       @include translate(0, 0px);
       @include scale(1);

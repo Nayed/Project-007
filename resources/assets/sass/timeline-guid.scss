@@ -7,8 +7,15 @@
   right: 15px;
   background: white;
   z-index: 999;
+  @include breakpoint(tablet) {
+    position: static;
+    width: 100%;
+  }
   button {
     margin-bottom: 15px;
+    @include breakpoint(tablet) {
+      margin: 5px;
+    }
     a {
       position: relative;
       z-index: 999;

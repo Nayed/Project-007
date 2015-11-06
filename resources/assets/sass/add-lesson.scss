@@ -1,0 +1,28 @@
+#add-lesson {
+  padding-top: 100px;
+  width: 1080px;
+  margin: auto;
+  form {
+    width: 100%;
+    .mdl-textfield {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: auto;
+    }
+    .textfield-custom {
+      label {
+        display: block;
+        color: #1A2530;
+        margin-bottom: 25px;
+      }
+    }
+    input[type="submit"]  {
+      margin: auto;
+      display: block;
+    }
+  }
+  .mdl-card {
+    width: 100%;
+  }
+}

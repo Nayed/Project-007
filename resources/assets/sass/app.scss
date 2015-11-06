@@ -9,6 +9,9 @@
 @import "nav.scss";
 @import "create-user.scss";
 @import "list-user.scss";
+@import "info.scss";
+@import "add-lesson.scss";
+
 
 body,html {
   @include clearfix;
@@ -18,6 +21,13 @@ body {
   &.auth-login {
     header {
       display: none;
+    }
+  }
+  &.lessons-add{
+    .mdl-layout__drawer-button {
+      height: auto;
+      width: auto;
+      margin: 20px 0 0 17px;
     }
   }
   .mdl-layout {

@@ -2,21 +2,30 @@
 
 @section('content')
 
- <div class="timeline-guid">
-     @unless ($lessons->isEmpty())
 
-             @foreach($lessons as $lesson)
-                 <button id="semaine-{{ $lesson->id }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-                     <a href="#article-s{{ $lesson->id }}"> Semaine {{ $lesson->id }}</a>
-                 </button>
-             @endforeach
-
+     @unless ($infos->isEmpty())
+         @foreach($infos as $info)
+             <div class="flash-info" data-week="{{$info->week}}" id="info-{{$info->week}}">
+                 <p>
+                     {{ $info->content }}
+                 </p>
+             </div>
+         @endforeach
      @endunless
- </div>
 
      @unless ($lessons->isEmpty())
          <div id="timeline">
+             <div class="timeline-guid">
+                 @unless ($lessons->isEmpty())
 
+                     @foreach($lessons as $lesson)
+                         <button id="semaine-{{ $lesson->id }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                             <a href="#article-s{{ $lesson->id }}"> Semaine {{ $lesson->id }}</a>
+                         </button>
+                     @endforeach
+
+                 @endunless
+             </div>
                  @foreach($lessons as $index => $lesson)
 
                  @if ( $index % 2 == 0 )

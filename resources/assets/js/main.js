@@ -31,4 +31,12 @@ $( document ).ready(function() {
         $.fancybox.close();
     });
 
+    $('.flash-info').each(function(){
+        var week = $(this).attr('data-week');
+        $('#article-s'+ week).prepend($(this));
+        $(this).addClass('is-visible');
+    });
+
+    $('#trumbowyg-demo').trumbowyg();
+
 });

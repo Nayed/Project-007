@@ -1,0 +1,16 @@
+.flash-info {
+  display: none;
+  width: 300px;
+  margin: auto;
+  background: #E74C3C;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  margin-bottom: 25px;
+  p {
+    margin: 0;
+  }
+  &.is-visible {
+    display: block;
+  }
+}
