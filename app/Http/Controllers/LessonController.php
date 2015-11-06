@@ -184,15 +184,8 @@ class LessonController extends Controller
             
           }
         }
-        if($uploadcount == $file_count){
-            
-         /* Session::flash('success', 'Upload successfully'); 
-          return Redirect::to('upload');*/
-
        
-        } 
->>>>>>> Stashed changes
-        
+
         return Redirect::to('lessons/list');
 
         
