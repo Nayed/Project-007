@@ -57,8 +57,12 @@ class NoteController extends Controller
        $inputs = Input::all();
    
        $lesson = Lesson::findOrFail($id_lecon);
-       $users = User::where('category_id',$lesson->category_id)->get();
-       
+       //$users = User::where('category_id',$lesson->category_id,'group_id',2)->get();
+      
+        $users = User::where('category_id', '=', $lesson->category_id)
+            ->where('group_id', '=', 2)
+            ->get();
+      
 
         return view('notes.list_eleve', [
             'users' => $users,

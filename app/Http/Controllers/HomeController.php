@@ -28,9 +28,17 @@ class HomeController extends Controller
      */
     public function index(Request $request){
        // $lesson = Lesson::where('user_id', $request->user()->id)->get()->medias;
-        $lessons = Lesson::all();
-        $infos = Info::all();
-        $notes = Note::where('user_id',Auth::user()->id)->get();
+        if (Auth::user()->group_id != 1){
+            $lessons = Lesson::where('category_id', Auth::user()->category_id)->get();
+            $infos = Info::all();
+            $notes = Note::where('user_id',Auth::user()->id)->get();
+        }else{
+            $lessons = Lesson::all();
+            $infos = Info::all();
+            $notes = Note::where('user_id',Auth::user()->id)->get();
+        }
+       
+ 
         return view('home.index', compact('lessons', 'infos','notes'));
     }
 
