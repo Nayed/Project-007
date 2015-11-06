@@ -27,6 +27,7 @@ Route::get('/lessons/add', 'LessonController@add');
 Route::post('/lessons/add_lesson', 'LessonController@add_lesson');
 Route::post('/lessons/update_image', 'LessonController@update_image');
 
+
 Route::get('/home/index', 'HomeController@index');
 Route::get('/home/about', 'HomeController@about');
 //Route::get('/home', 'HomeController@index');
@@ -34,21 +35,9 @@ Route::get('/home/about', 'HomeController@about');
 Route::get('/users', 'UserController@index');
 Route::get('/users/create', 'UserController@create');
 Route::post('/user/store', 'UserController@store');
+Route::get('/user/edit/{id}', 'UserController@edit');
+Route::post('/user/update/{id}', 'UserController@update');
+Route::delete('/user/{user}', 'UserController@destroy');
 
 Route::get('infos/create', 'InfoController@create');
 Route::post('info/store', 'InfoController@store');
-
-Route::get('notes/', 'NoteController@index');
-Route::get('notes/index', 'NoteController@index');
-Route::get('notes/list_eleve/{id}', 'NoteController@list_eleve');
-Route::get('notes/add_note/{id_lesson}/{id_eleve}', 'NoteController@add_note');
-Route::post('notes/update_note', 'NoteController@update_note');
-Route::post('notes/redirect_note', 'NoteController@redirect_note');
-
-
-
-
-
-
-
-

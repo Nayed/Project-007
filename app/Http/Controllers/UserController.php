@@ -10,6 +10,7 @@ use App\User;
 use App\Group;
 use App\Category;
 use Validator;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class UserController extends Controller
 {
@@ -104,7 +105,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
+        //dd($user);
+        $user->name = e($request->input('name'));
+        $user->email = e($request->input('email'));
+        $user->password = bcrypt(e($request->input('password')));
+        $user->save();
         
+        return redirect('/users');
     }
 
     /**
@@ -113,8 +121,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, User $user)
     {
-        //
+        //dd($user);
+        //$user->authorize('destroy', $user);
+    
+        $user->delete();
+    
+        return redirect('/users');
     }
 }
