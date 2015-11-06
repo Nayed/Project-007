@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use \Validator;
 use App\Info;
+use App\Lesson;
 
 class InfoController extends Controller
 {
@@ -29,7 +30,8 @@ class InfoController extends Controller
      */
     public function create()
     {
-        return view('infos.create');
+        $lessons = Lesson::all(['id']);
+        return view('infos.create', compact('lessons'));
     }
 
     /**
@@ -43,7 +45,7 @@ class InfoController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'content' => 'required',
-            'week' => 'required'
+            'lesson_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -55,10 +57,10 @@ class InfoController extends Controller
         $info = new Info;
         $info->title = $request->title;
         $info->content = $request->content;
-        $info->week = $request->week;
+        $info->week = $request->lesson_id;
         $info->save();
         
-        return redirect('/home');
+        return redirect('/home/index');
     }
 
     /**

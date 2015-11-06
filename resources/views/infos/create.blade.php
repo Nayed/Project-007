@@ -29,9 +29,12 @@
                     <label class="mdl-textfield__label" for="sample3">Contenu</label>
                 </div>
                 
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-                    <input type="text" class="mdl-textfield__input" name="week" value="{{ old('week') }}" required>
-                    <label class="mdl-textfield__label" for="sample3">Semaine</label>
+                <div class="form-group">
+                    <select class="form-control" name="lesson_id">
+                        @foreach($lessons as $lesson)
+                            <option value="{!! $lesson->id !!}">{!! $lesson->id !!}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
