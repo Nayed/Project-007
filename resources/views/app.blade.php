@@ -34,6 +34,7 @@
 		<div class="mdl-layout__header-row">
 			<!-- Title -->
 			<span class="mdl-layout-title">Team 007</span>
+			<img src="/img/logo.png"  width="35" class="logo"/>
 			<!-- Add spacer, to align navigation to the right -->
 			<div class="mdl-layout-spacer"></div>
 			<!-- Navigation. We hide it in small screens. -->
