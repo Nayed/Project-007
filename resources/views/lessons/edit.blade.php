@@ -47,7 +47,7 @@
                         {!! Form::label('Titre du document', 'Titre du document');!!}
                         {!! Form::text('title_document',$media->name);!!}
                         {!! Form::file('image');!!}
-                        <a href="uploads/{{$media->path}}" class="lightbox"> Voir le document</a>
+                        <a href="/uploads/{{$media->path}}" class="lightbox"> Voir le document</a>
                         {!! Form::submit('Envoyer', array('class' => 'send-doc')); !!}
 
 
