@@ -168,24 +168,7 @@ class LessonController extends Controller
           $validator = Validator::make(array('file'=> $file), $rules);
           if(!$validator->fails()){
             $destinationPath = 'uploads';
-<<<<<<< Updated upstream
-
-            $extension = $file->getClientOriginalExtension(); // getting image extension
-            $fileName = rand(11111,99999).'.'.$extension; // renameing image
-
-            $upload_success = $file->move($destinationPath, $fileName);
-            $uploadcount ++;
-            
-                $media = new Media();
-                $media->lesson_id = $lesson->id;
-                $media->path = $fileName;
-                $media->name = e($request->input('title_document'));
-                $media->save();
-          }
-        }
-     
-=======
-            
+  
             $extension = $file->getClientOriginalExtension(); // getting image extension
             $fileName = rand(11111,99999).'.'.$extension; // renameing image
 
