@@ -27,7 +27,7 @@
                  @endunless
              </div>
                  @foreach($lessons as $index => $lesson)
-
+                   
                  @if ( $index % 2 == 0 )
                      <div class="article-wrapper" id="article-s{{ $lesson->id }}">
                  @else
@@ -44,17 +44,23 @@
                                  <i class="material-icons">add</i>
                              </a>
                          </button>
-                         <h2>HTML/CSS</h2>
+                         <h2>{{ $lesson->name }}</h2>
                          <label>Par {{ $lesson->user->name }}</label>
                          <div class="summary">
                              {{ $lesson->content }}
                          </div>
                          <div class="note-wrapper">
-                             @if ( isset($user->notes))
-                                 <span class="note not">{{$user->notes[0]->value}}</span>
-                             @else
-                                 <span class="note not">N/A</span>
-                             @endif
+                         
+                            
+                                @unless ($lesson->notes->isEmpty())
+                                     @foreach($lesson->notes as $note)
+                                          <span class="note not">{{$note->value}}</span>
+                                     @endforeach
+                                @endunless
+                                @unless (!$lesson->notes->isEmpty())
+                                        <span class="note not">N/A</span>
+                                @endunless
+
                          </div>
                          <div class="doc-wrapper">
 

@@ -10,6 +10,7 @@ use App\Lesson;
 use App\Media;
 use App\Category;
 use App\Info;
+use App\Note;
 use Input;
 use Validator;
 use Redirect;

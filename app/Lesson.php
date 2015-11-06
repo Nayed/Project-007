@@ -18,6 +18,6 @@ class Lesson extends Model
     	return $this->hasMany('App\Media');
     }
     public function notes() {
-    	return $this->belongsTo('App\Note');
+    	return $this->hasMany('App\Note');
     }
 }
