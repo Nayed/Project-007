@@ -2,7 +2,6 @@
 
 @section('content')
 
-
      @unless ($infos->isEmpty())
          @foreach($infos as $info)
              <div class="flash-info" data-week="{{$info->week}}" id="info-{{$info->week}}">
@@ -50,16 +49,14 @@
                              {{ $lesson->content }}
                          </div>
                          <div class="note-wrapper">
-                         
-                            
-                                @unless ($lesson->notes->isEmpty())
-                                     @foreach($lesson->notes as $note)
-                                          <span class="note not">{{$note->value}}</span>
-                                     @endforeach
-                                @endunless
-                                @unless (!$lesson->notes->isEmpty())
-                                        <span class="note not">N/A</span>
-                                @endunless
+                                @foreach($notes as $note)
+                                    @if ($note->lesson_id == $lesson->id)
+                                         <span class="note not">{{$note->value}}</span>
+                                    @else
+                                         <span class="note not">N/A</span>
+                                    @endif
+                                                                    
+                                 @endforeach
 
                          </div>
                          <div class="doc-wrapper">

@@ -30,7 +30,8 @@ class HomeController extends Controller
        // $lesson = Lesson::where('user_id', $request->user()->id)->get()->medias;
         $lessons = Lesson::all();
         $infos = Info::all();
-        return view('home.index', compact('lessons', 'infos'));
+        $notes = Note::where('user_id',Auth::user()->id)->get();
+        return view('home.index', compact('lessons', 'infos','notes'));
     }
 
     /**
