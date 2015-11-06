@@ -48,17 +48,19 @@
                          <div class="summary">
                              {{ $lesson->content }}
                          </div>
-                         <div class="note-wrapper">
-                                @foreach($notes as $note)
-                                    @if ($note->lesson_id == $lesson->id)
-                                         <span class="note not">{{$note->value}}</span>
-                                    @else
-                                         <span class="note not">N/A</span>
-                                    @endif
-                                                                    
-                                 @endforeach
-
-                         </div>
+                         @if (Auth::user()->group->id != 1)
+                            <div class="note-wrapper">
+                                    @foreach($notes as $note)
+                                        @if ($note->lesson_id == $lesson->id)
+                                             <span class="note not">{{$note->value}}</span>
+                                        @else
+                                             <span class="note not">N/A</span>
+                                        @endif
+                                                                        
+                                     @endforeach
+    
+                            </div>
+                         @endif
                          <div class="doc-wrapper">
 
                          @unless ($lesson->medias->isEmpty())
