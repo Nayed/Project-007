@@ -5,9 +5,10 @@
 
 <p>Ajouter une note à : {{ $user->name }}  </p>
 
- {!! Form::open(array('url' => '/lessons/update_note', 'method' => 'POST')) !!}
+ {!! Form::open(array('url' => '/notes/update_note', 'method' => 'POST')) !!}
                  
 {!! Form::hidden('id',$user->id);!!}
+{!! Form::hidden('id_lecon',$id_lecon);!!}
 
  {!! Form::label('note', 'Note');!!}
  {!! Form::text('note');!!}

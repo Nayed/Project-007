@@ -58,6 +58,7 @@ class NoteController extends Controller
    
        $lesson = Lesson::findOrFail($id_lecon);
        $users = User::where('category_id',$lesson->category_id)->get();
+       
 
         return view('notes.list_eleve', [
             'users' => $users,
@@ -164,7 +165,6 @@ class NoteController extends Controller
         if($validation->fails()){
             exit('erreur');
         }
-        
             $note = new Note;
             $note->value = e($request->input('note'));
             $note->user_id = e($request->input('id'));
@@ -173,6 +173,27 @@ class NoteController extends Controller
        
             return Redirect::to('notes/list_eleve/'.$request->input('id_lecon'));
         
+    }
+    
+     public function modif_note(Request $request){
+        
+          
+        $inputs = Input::all();
+        $rules = array(
+            'note' => 'required',
+        );
+        
+        $validation = Validator::make($inputs,$rules);
+        if($validation->fails()){
+            exit('erreur');
+        }
+            $note = new Note;
+            $note->value = e($request->input('note'));
+            $note->user_id = e($request->input('id'));
+            $note->lesson_id = e($request->input('id_lecon'));
+            $note->save();
+       
+            return Redirect::to('notes/list_eleve/'.$request->input('id_lecon'));
         
     }
     

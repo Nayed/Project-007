@@ -22,7 +22,7 @@ class LessonController extends Controller
     
     public function index(Request $request){
         
-        $lesson = Lesson::where('user_id', $request->user()->id)->get();
+        $lesson = Lesson::all();
 
         return view('lessons.list', [
             'lessons' => $lesson,
