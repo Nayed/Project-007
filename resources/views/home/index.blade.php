@@ -34,7 +34,7 @@
                  @endif
 
                      <div class="timeline-post article-date">
-                         <p> Semaine {{ $lesson->name }} </p>
+                         <p> {{ $lesson->name }} </p>
                          <span>{{ date('F d, Y', strtotime($lesson->created_at)) }}</span>
                      </div>
                      <article class="timeline-post">
