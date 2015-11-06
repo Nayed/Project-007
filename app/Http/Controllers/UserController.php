@@ -110,6 +110,8 @@ class UserController extends Controller
         $user->name = e($request->input('name'));
         $user->email = e($request->input('email'));
         $user->password = bcrypt(e($request->input('password')));
+        $user->group_id = e($request->input('group_id'));
+        $user->category_id = e($request->input('category_id'));
         $user->save();
         
         return redirect('/users');
