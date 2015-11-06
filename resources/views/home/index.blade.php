@@ -50,8 +50,8 @@
                              {{ $lesson->content }}
                          </div>
                          <div class="note-wrapper">
-                             @if ( isset($user->section->note))
-                                 <span class="note not">{{$user->section->note}}</span>
+                             @if ( isset($user->notes))
+                                 <span class="note not">{{$user->notes[0]->value}}</span>
                              @else
                                  <span class="note not">N/A</span>
                              @endif

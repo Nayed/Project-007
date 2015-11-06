@@ -28,6 +28,7 @@ Route::post('/lessons/add_lesson', 'LessonController@add_lesson');
 Route::post('/lessons/update_image', 'LessonController@update_image');
 
 Route::get('/home/index', 'HomeController@index');
+Route::get('/home/about', 'HomeController@about');
 //Route::get('/home', 'HomeController@index');
 
 Route::get('/users', 'UserController@index');

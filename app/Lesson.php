@@ -17,4 +17,7 @@ class Lesson extends Model
     public function medias() {
     	return $this->hasMany('App\Media');
     }
+    public function notes() {
+    	return $this->belongsTo('App\Note');
+    }
 }
