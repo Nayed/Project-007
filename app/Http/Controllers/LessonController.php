@@ -60,11 +60,12 @@ class LessonController extends Controller
         $lesson->name = e($request->input('name'));
         $lesson->content = ($request->input('content'));
         $lesson->save();
-        
+
         $media = Media::find('lesson_id',$request->input('id'));
                // $lesson = Lesson::where('user_id', $request->user()->id)->get();
 
-        
+
+
         $file = array('image' => Input::file('image'));
 
         if (Input::file('image')->isValid()) {
@@ -167,6 +168,8 @@ class LessonController extends Controller
           $validator = Validator::make(array('file'=> $file), $rules);
           if(!$validator->fails()){
             $destinationPath = 'uploads';
+<<<<<<< Updated upstream
+
             $extension = $file->getClientOriginalExtension(); // getting image extension
             $fileName = rand(11111,99999).'.'.$extension; // renameing image
 
@@ -178,7 +181,24 @@ class LessonController extends Controller
                 $media->path = $fileName;
                 $media->name = e($request->input('title_document'));
                 $media->save();
-   
+          }
+        }
+     
+=======
+            
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $fileName = rand(11111,99999).'.'.$extension; // renameing image
+
+            $upload_success = $file->move($destinationPath, $fileName);
+            $uploadcount ++;
+            
+                $media = new Media();
+                $media->lesson_id = $lesson->id;
+                $media->path = $fileName;
+                $media->name = e($request->input('title_document'));
+                $media->save();
+            
+            
           }
         }
         if($uploadcount == $file_count){
@@ -188,6 +208,7 @@ class LessonController extends Controller
 
        
         } 
+>>>>>>> Stashed changes
         
         return Redirect::to('lessons/list');
 
