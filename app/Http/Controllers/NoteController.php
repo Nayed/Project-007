@@ -58,8 +58,8 @@ class NoteController extends Controller
    
        $lesson = Lesson::findOrFail($id_lecon);
        $users = User::where('category_id',$lesson->category_id)->get();
-       
-       return view('notes.list_eleve', [
+
+        return view('notes.list_eleve', [
             'users' => $users,
             'id_lecon' => $id_lecon
         ]);
@@ -69,13 +69,14 @@ class NoteController extends Controller
     
     
 
-     public function add_note($id)
+     public function add_note($id_lecon,$id_eleve)
     {
 
    
-       $user = User::findOrFail($id);
-       return view('notes.add_notes', [
+       $user = User::findOrFail($id_eleve);
+       return view('notes.add_note', [
             'user' => $user,
+            'id_lecon' => $id_lecon,
         ]); 
 
     }
@@ -129,7 +130,7 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update_note(Request $request)
+ /*   public function list_eleve(Request $request)
     {
        
         $inputs = Input::all();
@@ -143,15 +144,38 @@ class NoteController extends Controller
         }
         
             $note = new Note;
-            $note->user_id = Auth::user()->id ;
-            $lesson->name = e($request->input('name'));
-            $lesson->date_start = e($request->input('date_start'));
-            $lesson->content = ($request->input('content'));
-            $lesson->category_id = e($request->input('category'));
-            $lesson->save();
+            $note->value = e($request->input('note'));
+            $note->user_id = e($request->input('id'));
+            $note->lesson_id = e($request->input('id_lecon'));
+            $note->save();
        
+            return Redirect::to('notes/');
+    }*/
+    
+    public function update_note(Request $request){
+        
+          
+        $inputs = Input::all();
+        $rules = array(
+            'note' => 'required',
+        );
+        
+        $validation = Validator::make($inputs,$rules);
+        if($validation->fails()){
+            exit('erreur');
+        }
+        
+            $note = new Note;
+            $note->value = e($request->input('note'));
+            $note->user_id = e($request->input('id'));
+            $note->lesson_id = e($request->input('id_lecon'));
+            $note->save();
        
+            return Redirect::to('notes/list_eleve/'.$request->input('id_lecon'));
+        
+        
     }
+    
 
     /**
      * Remove the specified resource from storage.
